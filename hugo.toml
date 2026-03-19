@@ -1,0 +1,79 @@
+baseURL = 'https://5E3A.github.io/'
+languageCode = 'es'
+title = '5E3A | Dev Blog'
+theme = "PaperMod"
+
+[params]
+    env = "production"
+    description = "Bitácora personal sobre arquitectura, desarrollo de software y conceptos técnicos. Built with Hugo & PaperMod."
+    author = "Sebastian"
+    
+    # Configuración de apariencia
+    defaultTheme = "auto" # Cambia entre luz/oscuridad según el sistema
+    showCodeCopyButtons = true # Ideal para tus posts de Go/HTMX
+    showReadingTime = true
+    showShareButtons = false
+    showPostNavLinks = true
+    showBreadCrumbs = false
+    showRssButtonInSectionTermList = false
+    showToc = true
+    showAllPagesInArchive = true
+    showPageNums = false
+
+[params.homeInfoParams]
+    Title = "5E3A"
+    Content = """
+<p>Bienvenido a mi bitácora personal. En este espacio vas a encontrar temas 
+relacionados al <strong>desarrollo de software</strong>, una área que 
+me apasiona y a la que me dedico desde hace ya varios años.
+</p>
+<br/>
+<p>El contenido aquí publicado esta realizado con IA para agilizar la creación. 
+Como en todo flujo realizado con IA, recomiendo validar los puntos de tu mayor 
+interes con la doc. oficial para asegurar la máxima precisión.</p>
+<br/>
+<p>Soy consciente de los desafíos de estas herramientas; por eso, cuando un post 
+sea de mi autoría exclusiva, estará etiquetado como <a href="/tags/5e3a">
+<strong>5E3A</strong></a>. Quizás sean los menos, pero priorizo la transparencia.</p>
+<br/>
+<p>¡Gracias por pasar!</p>
+<div style="text-align: right;">Sebastian.</a>
+"""
+
+[params.shareButtons]
+    twitter = false
+    linkedin = false
+    reddit = false
+    facebook = false
+    whatsapp = false
+    telegram = false
+    ycombinator = false
+
+    # Menú de navegación
+    [[menu.main]]
+        identifier = "projects"
+        name = "Projects"
+        url = "/projects/"
+        weight = 5
+
+    [[menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts/"
+        weight = 10
+
+    [[menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        weight = 15
+
+    [[menu.main]]
+        identifier = "archives"
+        name = "Archives"
+        url = "/archives/"
+        weight = 20
+
+[markup.highlight]
+    noClasses = false
+    style = "monokai" # Resaltado de código tipo VS Code

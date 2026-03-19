@@ -1,0 +1,25 @@
+.list .logo .title-main {
+  /* display: none;
+  font-family: "Rock Salt", cursive;
+  font-weight: 900;
+  font-style: italic; */
+}
+
+.logo .title-secondary {
+  color: gray;
+  font-size: 1.0
+}
+
+.profile h1 {
+  font-family: "Rock Salt", cursive;
+  font-weight: 900;
+  font-size: 4.0rem;
+  font-style: italic;
+}
+
+.home-info h1{
+  font-family: "Rock Salt", cursive;
+  font-weight: 900;
+  font-style: italic;
+  height: 52px;
+}
