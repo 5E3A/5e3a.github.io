@@ -3,15 +3,23 @@ name: Deploy Hugo site to Pages
 on:
   push:
     branches: ["main"]
+  workflow_dispatch: # Permite correrlo manualmente desde la web si falla
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Permite solo un despliegue concurrente para evitar colisiones
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Soluciona el warning de Node.js 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,8 +33,15 @@ jobs:
           hugo-version: 'latest'
           extended: true # Necesario para PaperMod por el manejo de SCSS/CSS
 
-      - name: Build
-        run: hugo --minify
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Hugo
+        run: |
+          hugo \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
