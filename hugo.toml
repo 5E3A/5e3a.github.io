@@ -1,4 +1,4 @@
-baseURL = 'https://5E3A.github.io/'
+baseURL = 'https://5e3a.github.io/'
 languageCode = 'es'
 title = '5E3A | Dev Blog'
 theme = "PaperMod"
