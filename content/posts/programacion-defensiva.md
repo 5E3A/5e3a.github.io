@@ -15,9 +15,15 @@ Un Timeout es un patrón que establece un tiempo máximo de espera para una oper
 ¿Por qué es vital? Sin un timeout, un hilo (thread) o goroutine puede quedarse esperando una respuesta para siempre (Hanging). Si tienes 100 usuarios esperando y 100 hilos bloqueados, tu servidor se queda sin recursos y deja de responder a todos los demás.
 
 ### 3. Tipos de Timeouts en la Industria
-Connection Timeout: El tiempo máximo para establecer el "apretón de manos" (handshake) inicial con un servidor.
-Read/Request Timeout: Una vez conectados, es el tiempo máximo que esperamos por la respuesta completa.
-Idle Timeout: Tiempo máximo que una conexión puede estar abierta sin transmitir datos.
+
+#### Connection Timeout
+El tiempo máximo para establecer el "apretón de manos" (handshake) inicial con un servidor.
+
+#### Read/Request Timeout
+Una vez conectados, es el tiempo máximo que esperamos por la respuesta completa.
+
+#### Idle Timeout
+Tiempo máximo que una conexión puede estar abierta sin transmitir datos.
 
 ### 4. Patrones Defensivos Relacionados
 
