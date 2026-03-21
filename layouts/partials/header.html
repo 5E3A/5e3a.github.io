@@ -87,12 +87,21 @@
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
             {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
+            {{- $section_name := trim .URL "/" -}}
+            {{- $count := len (where site.RegularPages "Section" $section_name) -}}
             <li>
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
                 {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
                     <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
                         {{- .Pre }}
                         {{- .Name -}}
+
+                        {{- if or (eq .Name "Projects") (eq .Name "Posts") }}
+                            {{- if gt $count 0 }}
+                                <span class="menu-count">({{ $count }})</span>
+                            {{- end }}
+                        {{- end }}
+
                         {{ .Post -}}
                     </span>
                     {{- if (findRE "://" .URL) }}&nbsp;
