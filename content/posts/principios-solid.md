@@ -69,7 +69,22 @@ class ProcesadorDePagos {
 
 ### L: Liskov Substitution (Sustitución de Liskov)
 
-> "Las subclases deben poder ser sustituidas por sus clases base sin que el programa falle".
+> "Los objetos de la clase base deben poder ser sustituidos por objetos de sus subclases sin que el programa falle".
+
+Imagina que tienes una función que espera un Animal (la base/superior):
+
+- **El escenario**: function hacerCaminar(Animal $a) { ... }
+- **La prueba de Liskov**: Si tú le pasas un Perro (la subclase) a esa función, el programa no debe romperse.
+- **La lógica**: Como el Perro extiende de Animal, debería "saber hacer" todo lo que un Animal hace. Si el Perro rompe alguna promesa de la clase Animal (como lanzar una excepción donde el padre no lo hacía), entonces no es un buen sustituto.
+
+Para que no se te olvide:
+
+- **Clase Base (Padre)**: Es el "molde" o contrato general.
+- **Subclase (Hijo)**: Es la implementación específica.
+
+**Liskov dice**: "Si mi código funciona con el Padre, debe seguir funcionando si le doy al Hijo".
+
+Si intentaras hacerlo al revés (meter un Animal donde se espera un Perro), el programa fallaría porque al Animal le faltarían las cosas específicas del Perro (como ladrar). Por eso la sustitución siempre es hacia arriba (el hijo reemplaza al padre).
 
 Si tenés una clase base Archivo. Asumís que todos los archivos se pueden escribir. Pero de repente, necesitás manejar archivos de Solo Lectura (como un archivo de sistema protegido).
 
