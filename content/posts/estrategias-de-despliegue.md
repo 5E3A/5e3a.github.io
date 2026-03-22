@@ -148,7 +148,7 @@ Herramientas como **GitHub Actions**, **GitLab CI** o **Jenkins** son los motore
 
 ### Conexión con la Disponibilidad
 
-Como analicé en mi post sobre [Uptime Modeling](/posts/git/uptime-modeling-guia-sre), estas técnicas son las herramientas que reducen el **MTTR** (Mean Time To Recovery) y protegen nuestro **Error Budget**:
+Como analicé en mi post sobre [Uptime Modeling](/posts/uptime-modeling-guia-sre), estas técnicas son las herramientas que reducen el **MTTR** (Mean Time To Recovery) y protegen nuestro **Error Budget**:
 
 - * Un **Rollback automático** en un Canary Deployment salva tu SLA en segundos.
 - * Un **Feature Flag** permite apagar una función rota sin necesidad de un nuevo despliegue.
