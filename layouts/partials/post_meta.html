@@ -1,0 +1,29 @@
+{{- $scratch := newScratch }}
+
+{{- if not .Date.IsZero -}}
+{{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default ":date_long" site.Params.DateFormat)))) }}
+{{- end }}
+
+{{- if (.Param "ShowReadingTime") -}}
+{{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime)))) }}
+{{- end }}
+
+{{- if (.Param "ShowWordCount") -}}
+{{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "words" .WordCount | default (printf "%d words" .WordCount)))) }}
+{{- end }}
+
+{{- if not (.Param "hideAuthor") -}}
+{{- with (partial "author.html" .) }}
+{{- $scratch.Add "meta" (slice (printf "<span>%s</span>" .)) }}
+{{- end }}
+{{- end }}
+
+{{- if eq .Kind "page" -}}
+    {{- if not (.Param "hideMeta") -}}
+        {{- $scratch.Add "meta" (slice (printf "<button id='btn-read-post' title='Escuchar post' style='background:none;border:none;color:inherit;cursor:pointer;padding:0;font:inherit;display:inline-flex;align-items:center;gap:4px;opacity:0.7;'><span id='icon-read'>▷</span> <span id='text-read'>Escuchar</span></button>")) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- with ($scratch.Get "meta") }}
+{{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- end -}}

@@ -1,0 +1,95 @@
+{{- /* Footer custom content area start */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+<script>
+window.speechState = window.speechState || {
+    chunks: [],
+    currentIndex: 0,
+    isPlaying: false
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn-read-post');
+    if (!btn) return;
+
+    const icon = document.getElementById('icon-read');
+    const text = document.getElementById('text-read');
+    const synth = window.speechSynthesis;
+
+    btn.addEventListener('click', () => {
+
+        if (synth.speaking && window.speechState.isPlaying) {
+            window.speechState.isPlaying = false;
+            synth.cancel(); 
+            updateBtn("▷", "Reanudar");
+            return;
+        }
+
+        if (!window.speechState.isPlaying) {
+            if (window.speechState.chunks.length === 0) {
+                const elements = document.querySelectorAll('article h1, article h2, article h3, article h4, article p, article li');
+                elements.forEach(el => {
+                    if (!el.closest('pre') && !el.closest('code') && !el.closest('.post-meta') && !el.closest('.post-tags')) {
+                        let t = el.innerText.trim();
+                        if (t.length > 3) {
+                            const subs = t.split(/[.!?]\s/).filter(f => f.trim().length > 3);
+                            window.speechState.chunks.push(...subs);
+                        }
+                    }
+                });
+            }
+
+            readChunks(window.speechState.currentIndex);
+        }
+    });
+
+    function readChunks(index) {
+        if (index >= window.speechState.chunks.length) {
+            finishReading();
+            return;
+        }
+
+        window.speechState.isPlaying = true;
+        window.speechState.currentIndex = index;
+        
+        const utterance = new SpeechSynthesisUtterance(window.speechState.chunks[index]);
+        const voices = synth.getVoices();
+        utterance.voice = voices.find(v => v.lang.includes('es')) || voices[0];
+        utterance.lang = 'es-ES';
+        utterance.rate = 1.1;
+
+        utterance.onstart = () => updateBtn("⏸", "Pausar");
+
+        utterance.onend = () => {
+            if (window.speechState.isPlaying) {
+                window.speechState.currentIndex++;
+                readChunks(window.speechState.currentIndex);
+            }
+        };
+
+        utterance.onerror = (e) => {
+            if (e.error !== 'interrupted') {
+                console.error("Error real SpeechSynthesis:", e.error);
+            }
+            if (window.speechState.isPlaying && e.error !== 'interrupted') {
+                window.speechState.currentIndex++;
+                readChunks(window.speechState.currentIndex);
+            }
+        };
+
+        synth.speak(utterance);
+    }
+
+    function finishReading() {
+        window.speechState.isPlaying = false;
+        window.speechState.currentIndex = 0;
+        window.speechState.chunks = [];
+        updateBtn("▷", "Escuchar");
+    }
+
+    function updateBtn(ico, txt) {
+        icon.innerText = ico;
+        text.innerText = txt;
+    }
+});
+</script>
+{{- /* Footer custom content area end */ -}}
