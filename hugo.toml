@@ -1,6 +1,6 @@
 baseURL = 'https://5e3a.github.io/'
 languageCode = 'es'
-title = '5E3A | Dev Blog'
+title = '5E3A(DevBlog)'
 theme = "PaperMod"
 
 [params]
@@ -27,7 +27,7 @@ theme = "PaperMod"
     <br/>
 <p>
 En este espacio comparto contenido sobre <b>desarrollo de software</b> 
-y su entorno, una disciplina que me motiva a la mejora continua 
+y su entorno, un área que me motiva a la mejora continua 
 y a la que me dedico profesionalmente hace varios años.
 </p>
 <br/>
@@ -41,7 +41,7 @@ del área específicas.
 </p>
 <br/>
 <p>¡Gracias por pasar!</p>
-<div style="text-align: right;" class="home-info"><h1>5E3A :)</h1>Software Developer</div>
+<div style="text-align: right;" class="home-info"><h3>5E3Astian :)</h3>Software Developer</div>
 """
 
 [params.shareButtons]

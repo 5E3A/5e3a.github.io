@@ -17,9 +17,9 @@
   font-style: italic;
 }
 
-.home-info h1{
+.title-main, .home-info h3{
   font-family: "Rock Salt", cursive;
   font-weight: 900;
   font-style: italic;
-  height: 52px;
+  height: 32px;
 }
