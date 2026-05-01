@@ -1,6 +1,6 @@
 ---
 title: "Arquitectura de APIs Orientadas a Eventos"
-date: 2026-04-13
+date: 2026-05-01
 tags: ["Architecture", "Event-Driven", "Microservices", "System Design"]
 categories: ["Technical Design"]
 author: "Sebastian"
