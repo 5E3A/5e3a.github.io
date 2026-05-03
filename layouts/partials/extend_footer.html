@@ -90,6 +90,67 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.innerText = ico;
         text.innerText = txt;
     }
+
+    document.getElementById('challenge_validate').addEventListener('click', function() {
+        let currentQuestion = 1;
+        let score = 0;
+        let totalQuestions = 0;
+        let active = true;
+
+        while (active) {
+            const inputs = document.querySelectorAll(`input[name="challenge_${currentQuestion}"]`);
+
+            if (inputs.length === 0) {
+                active = false;
+                break;
+            }
+
+            totalQuestions++;
+            let answeredCorrectly = false;
+
+            inputs.forEach(input => {
+                const isCorrect = input.getAttribute('data-result') === "true";
+                const parentElement = input.parentElement;
+
+                parentElement.style.color = "";
+                parentElement.style.fontWeight = "normal";
+
+                if (isCorrect) {
+                    parentElement.style.color = "#28a745";
+                    parentElement.style.fontWeight = "bold";
+                }
+
+                if (input.checked && isCorrect) {
+                    answeredCorrectly = true;
+                } else if (input.checked && !isCorrect) {
+                    parentElement.style.color = "#dc3545";
+                    parentElement.style.fontWeight = "bold";
+                }
+            });
+
+            if (answeredCorrectly) score++;
+            currentQuestion++;
+        }
+
+        const resultDiv = document.getElementById('quiz-result');
+        if (resultDiv) {
+            const shareUrl = window.location.href.split(window.location.hash).join("");
+
+            resultDiv.innerHTML = `
+                <div style="padding: 15px; margin-top: 20px;">
+                    <p><strong>Resultado:</strong> ${score} de ${totalQuestions}</p>
+                    <hr style="margin: 8px; margin-left: 0px; margin-right:0px;">
+                    <p>Ahora podés ir a tu IA de interés y pegar el siguiente contenido:</p>
+                    <blockquote style="padding: 10px; font-style: italic;">
+                        Podés leer el artículo de ${shareUrl} y en base al mismo generar preguntas 
+                        variadas para explicarte lo que entendí y al responderte me las puedas validar y
+                        dar feedback al respecto.
+                    </blockquote>
+                </div>
+            `;
+        }
+    });
+
 });
 </script>
 {{- /* Footer custom content area end */ -}}

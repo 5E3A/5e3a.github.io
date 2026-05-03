@@ -81,3 +81,6 @@ del área específicas.
 [markup.highlight]
     noClasses = false
     style = "monokai" # Resaltado de código tipo VS Code
+
+[markup.goldmark.renderer]
+    unsafe = true

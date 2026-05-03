@@ -277,6 +277,121 @@ A diferencia de Docker, Podman fue diseñado desde el día 1 para ser rootless y
 
 - **Limitá los recursos (CPU y RAM):** En la industria, nunca dejás que un contenedor use todo lo que quiera. En el docker-compose.yml, se suelen definir limits de memoria (ej: 256mb) para evitar que un bug o un "memory leak" de un solo servicio te tire abajo todo el servidor.
 
+## 7. Challenge
+
+1. **¿Cuál es la diferencia técnica fundamental entre un contenedor y una Máquina Virtual?**
+
+    A - <input type="radio" class="challenge_1" name="challenge_1" data-result="false"> - Las VMs son más livianas porque no emulan hardware.
+
+    B - <input type="radio" class="challenge_1" name="challenge_1" data-result="true"> - Docker utiliza el kernel del sistema operativo host para aislar procesos, siendo más eficiente que una VM que emula un OS completo.
+
+    C - <input type="radio" class="challenge_1" name="challenge_1" data-result="false"> - Los contenedores son más lentos al arrancar porque requieren virtualizar el hardware.
+
+    D - <input type="radio" class="challenge_1" name="challenge_1" data-result="false"> - No hay diferencia, ambos términos se refieren a la misma tecnología de aislamiento.
+<br/><br/>
+
+2. **En el ecosistema de Docker, ¿qué representa una "Imagen"?**
+
+    A - <input type="radio" class="challenge_2" name="challenge_2" data-result="false"> - Una instancia de un contenedor en ejecución.
+
+    B - <input type="radio" class="challenge_2" name="challenge_2" data-result="true"> - Un paquete ejecutable, estático e inmutable que incluye código, runtime, librerías y configuraciones.
+
+    C - <input type="radio" class="challenge_2" name="challenge_2" data-result="false"> - El archivo YAML donde se definen los servicios de red.
+
+    D - <input type="radio" class="challenge_2" name="challenge_2" data-result="false"> - Un proceso del sistema operativo que corre en segundo plano.
+<br/><br/>
+
+3. **¿Qué comando utilizarías para monitorear en tiempo real el consumo de recursos (CPU, RAM, Red) de tus contenedores?**
+
+    A - <input type="radio" class="challenge_3" name="challenge_3" data-result="false"> - `docker ps -a`
+
+    B - <input type="radio" class="challenge_3" name="challenge_3" data-result="false"> - `docker inspect`
+
+    C - <input type="radio" class="challenge_3" name="challenge_3" data-result="true"> - `docker stats`
+
+    D - <input type="radio" class="challenge_3" name="challenge_3" data-result="false"> - `docker logs -f`
+<br/><br/>
+
+4. **¿Cuál es la función de la instrucción WORKDIR en un Dockerfile?**
+
+    A - <input type="radio" class="challenge_4" name="challenge_4" data-result="false"> - Instalar las dependencias necesarias del proyecto.
+
+    B - <input type="radio" class="challenge_4" name="challenge_4" data-result="true"> - Establecer el directorio de trabajo donde se ejecutarán las instrucciones posteriores como RUN o CMD.
+
+    C - <input type="radio" class="challenge_4" name="challenge_4" data-result="false"> - Definir el puerto que el contenedor expondrá al exterior.
+
+    D - <input type="radio" class="challenge_4" name="challenge_4" data-result="false"> - Indicar el comando inicial que debe correr el contenedor.
+<br/><br/>
+
+5. **¿Qué ventaja ofrece Docker Compose al trabajar con microservicios?**
+
+    A - <input type="radio" class="challenge_5" name="challenge_5" data-result="false"> - Permite que las aplicaciones de Node.js corran más rápido.
+
+    B - <input type="radio" class="challenge_5" name="challenge_5" data-result="false"> - Reemplaza la necesidad de tener Docker instalado en el host.
+
+    C - <input type="radio" class="challenge_5" name="challenge_5" data-result="true"> - Permite definir y orquestar múltiples contenedores (DB, API, Cache) en un único archivo YAML.
+
+    D - <input type="radio" class="challenge_5" name="challenge_5" data-result="false"> - Es una herramienta exclusiva para entornos de producción masiva.
+<br/><br/>
+
+6. **Si querés liberar espacio en disco eliminando contenedores detenidos y recursos no utilizados, ¿qué comando es el más efectivo?**
+
+    A - <input type="radio" class="challenge_6" name="challenge_6" data-result="false"> - `docker rm -f $(docker ps -a)`
+
+    B - <input type="radio" class="challenge_6" name="challenge_6" data-result="false"> - `docker rmi -a`
+
+    C - <input type="radio" class="challenge_6" name="challenge_6" data-result="true"> - `docker system prune`
+
+    D - <input type="radio" class="challenge_6" name="challenge_6" data-result="false"> - `docker-compose down`
+<br/><br/>
+
+7. **¿Cuál es una de las razones principales para preferir Podman en entornos que priorizan la seguridad?**
+
+    A - <input type="radio" class="challenge_7" name="challenge_7" data-result="false"> - Porque solo permite ejecutar contenedores de Linux.
+
+    B - <input type="radio" class="challenge_7" name="challenge_7" data-result="true"> - Porque es "rootless" de forma nativa, permitiendo correr contenedores sin privilegios de administrador.
+
+    C - <input type="radio" class="challenge_7" name="challenge_7" data-result="false"> - Porque no requiere el uso de archivos Dockerfile.
+
+    D - <input type="radio" class="challenge_7" name="challenge_7" data-result="false"> - Porque encripta automáticamente el sistema de archivos de las imágenes.
+<br/><br/>
+
+8. **¿Qué sucede con los datos almacenados dentro de un contenedor si no se utilizó un "Volume" y el contenedor es eliminado?**
+
+    A - <input type="radio" class="challenge_8" name="challenge_8" data-result="false"> - Los datos se guardan en el historial de Docker Hub.
+
+    B - <input type="radio" class="challenge_8" name="challenge_8" data-result="false"> - Se recuperan automáticamente al crear un nuevo contenedor con la misma imagen.
+
+    C - <input type="radio" class="challenge_8" name="challenge_8" data-result="true"> - Los datos se pierden permanentemente debido a que el sistema de archivos del contenedor es efímero.
+
+    D - <input type="radio" class="challenge_8" name="challenge_8" data-result="false"> - Docker genera un backup temporal en la carpeta `/tmp` del host.
+<br/><br/>
+
+9. **En un archivo docker-compose.yml, ¿para qué se utiliza la instrucción depends_on?**
+
+    A - <input type="radio" class="challenge_9" name="challenge_9" data-result="false"> - Para descargar imágenes de repositorios externos.
+
+    B - <input type="radio" class="challenge_9" name="challenge_9" data-result="true"> - Para definir el orden de arranque de los servicios, asegurando que uno inicie antes que el otro.
+
+    C - <input type="radio" class="challenge_9" name="challenge_9" data-result="false"> - Para limitar el uso de memoria RAM de un contenedor específico.
+
+    D - <input type="radio" class="challenge_9" name="challenge_9" data-result="false"> - Para mapear puertos entre el host y el contenedor.
+<br/><br/>
+
+10. **¿Cuál es el objetivo principal de aplicar "Multi-stage builds" en la creación de imágenes?**
+
+    A - <input type="radio" class="challenge_10" name="challenge_10" data-result="false"> - Poder ejecutar varios lenguajes de programación en el mismo contenedor.
+
+    B - <input type="radio" class="challenge_10" name="challenge_10" data-result="true"> - Reducir drásticamente el tamaño de la imagen final al separar el entorno de compilación del de ejecución.
+
+    C - <input type="radio" class="challenge_10" name="challenge_10" data-result="false"> - Aumentar la velocidad de descarga de las imágenes desde Docker Hub.
+
+    D - <input type="radio" class="challenge_10" name="challenge_10" data-result="false"> - Evitar el uso de contenedores en la etapa de desarrollo.
+
+<div id="quiz-result">
+    <button id="challenge_validate" style="padding:8px; border-bottom: 1px solid grey;" >Click aquí para validar respuestas<button>
+</div>
+
 ## Conclusión
 
 Docker no es solo una herramienta, es una mentalidad de empaquetado. Al dominar Docker y Compose, garantizás que tu software sea portable, escalable y fácil de mantener para cualquier equipo.
