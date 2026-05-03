@@ -410,7 +410,7 @@ En el mundo real, muchas veces empezamos con un Worker simple en Go (que es súp
 
 Aquí tenés las 20 preguntas con el formato exacto para tu blog, numeradas del 1 al 20, con los saltos de línea y los `data-result` correspondientes para que tu script las procese a la perfección.
 
-## 7. Challenge
+## 8. Challenge
 
 1. **¿Cuál es la principal diferencia entre una API REST tradicional y una arquitectura EDA?**
 
