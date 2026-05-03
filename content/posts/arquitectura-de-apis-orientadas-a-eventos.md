@@ -406,6 +406,235 @@ Herramientas como Debezium se configuran mediante filtros. Vos le decís:
 
 En el mundo real, muchas veces empezamos con un Worker simple en Go (que es súper liviano) y, cuando el sistema crece y la latencia de 1 segundo molesta, migramos a Debezium.
 
+¡Excelente elección! Este artículo sobre **Arquitectura de APIs Orientadas a Eventos (EDA)** es ideal para profundizar en patrones de diseño desacoplados.
+
+Aquí tenés las 20 preguntas con el formato exacto para tu blog, numeradas del 1 al 20, con los saltos de línea y los `data-result` correspondientes para que tu script las procese a la perfección.
+
+## 7. Challenge
+
+1. **¿Cuál es la principal diferencia entre una API REST tradicional y una arquitectura EDA?**
+
+    A - <input type="radio" class="challenge_1" name="challenge_1" data-result="false"> - REST gestiona datos en tiempo real mientras que EDA solo procesa logs.
+
+    B - <input type="radio" class="challenge_1" name="challenge_1" data-result="true"> - REST es síncrona por diseño, mientras que EDA se basa en flujos asíncronos.
+
+    C - <input type="radio" class="challenge_1" name="challenge_1" data-result="false"> - EDA requiere bases de datos SQL y REST utiliza únicamente NoSQL.
+
+    D - <input type="radio" class="challenge_1" name="challenge_1" data-result="false"> - REST utiliza protocolos binarios y EDA se limita al uso de texto plano.
+<br/><br/>
+
+2. **¿Qué define a un "Evento" en este tipo de arquitecturas?**
+
+    A - <input type="radio" class="challenge_2" name="challenge_2" data-result="false"> - Una solicitud enviada por un cliente que bloquea la ejecución del hilo.
+
+    B - <input type="radio" class="challenge_2" name="challenge_2" data-result="false"> - Un comando imperativo que ordena a un servicio realizar una tarea.
+
+    C - <input type="radio" class="challenge_2" name="challenge_2" data-result="true"> - Un registro inmutable de un cambio de estado ocurrido en el sistema.
+
+    D - <input type="radio" class="challenge_2" name="challenge_2" data-result="false"> - Una función de callback que se dispara al terminar una petición HTTP.
+<br/><br/>
+
+3. **¿Cuál es el rol del "Event Broker" en una EDA?**
+
+    A - <input type="radio" class="challenge_3" name="challenge_3" data-result="false"> - Compilar el código fuente y desplegar los servicios en contenedores.
+
+    B - <input type="radio" class="challenge_3" name="challenge_3" data-result="true"> - Desacoplar productores y consumidores gestionando el flujo de mensajes.
+
+    C - <input type="radio" class="challenge_3" name="challenge_3" data-result="false"> - Balancear la carga de peticiones HTTP entre diferentes servidores web.
+
+    D - <input type="radio" class="challenge_3" name="challenge_3" data-result="false"> - Transformar automáticamente archivos JSON en tablas de base de datos.
+<br/><br/>
+
+4. **¿Qué significa que los servicios estén "desacoplados" en una arquitectura de eventos?**
+
+    A - <input type="radio" class="challenge_4" name="challenge_4" data-result="false"> - Que la comunicación entre los componentes se realiza mediante archivos locales.
+
+    B - <input type="radio" class="challenge_4" name="challenge_4" data-result="false"> - Que cada microservicio debe compartir obligatoriamente el mismo esquema físico.
+
+    C - <input type="radio" class="challenge_4" name="challenge_4" data-result="true"> - Que el emisor no requiere conocer la identidad o estado de los receptores.
+
+    D - <input type="radio" class="challenge_4" name="challenge_4" data-result="false"> - Que los servicios solo pueden interactuar si están escritos en Go o Rust.
+<br/><br/>
+
+5. **¿Qué es el patrón "Pub/Sub" (Publish/Subscribe)?**
+
+    A - <input type="radio" class="challenge_5" name="challenge_5" data-result="false"> - Un sistema de validación de usuarios basado en roles y permisos locales.
+
+    B - <input type="radio" class="challenge_5" name="challenge_5" data-result="true"> - Un modelo de mensajería donde los suscriptores filtran eventos por canales.
+
+    C - <input type="radio" class="challenge_5" name="challenge_5" data-result="false"> - Un algoritmo de compresión para reducir el tamaño de los payloads de red.
+
+    D - <input type="radio" class="challenge_5" name="challenge_5" data-result="false"> - Un protocolo de seguridad para encriptar comunicaciones entre microservicios.
+<br/><br/>
+
+6. **¿Cuál es una de las principales ventajas de la escalabilidad en EDA?**
+
+    A - <input type="radio" class="challenge_6" name="challenge_6" data-result="false"> - Reduce drásticamente el uso de CPU al eliminar el uso de protocolos TCP.
+
+    B - <input type="radio" class="challenge_6" name="challenge_6" data-result="false"> - Garantiza que el almacenamiento en disco sea menor que en sistemas REST.
+
+    C - <input type="radio" class="challenge_6" name="challenge_6" data-result="true"> - Permite escalar consumidores de forma independiente según la carga del broker.
+
+    D - <input type="radio" class="challenge_6" name="challenge_6" data-result="false"> - Asegura que todos los eventos se procesen siempre de manera secuencial.
+<br/><br/>
+
+7. **¿Qué es la "Consistencia Eventual"?**
+
+    A - <input type="radio" class="challenge_7" name="challenge_7" data-result="false"> - Un estado de error persistente donde los datos se corrompen en el tiempo.
+
+    B - <input type="radio" class="challenge_7" name="challenge_7" data-result="false"> - La obligación de que todos los nodos se actualicen de forma atómica y síncrona.
+
+    C - <input type="radio" class="challenge_7" name="challenge_7" data-result="true"> - Un modelo donde los nodos alcanzan el mismo estado tras un lapso de tiempo.
+
+    D - <input type="radio" class="challenge_7" name="challenge_7" data-result="false"> - Una técnica de caché para acelerar la lectura de datos en aplicaciones móviles.
+<br/><br/>
+
+8. **¿Cuál es la función de una "DLQ" (Dead Letter Queue)?**
+
+    A - <input type="radio" class="challenge_8" name="challenge_8" data-result="false"> - Optimizar el enrutamiento de eventos que tienen alta prioridad en el sistema.
+
+    B - <input type="radio" class="challenge_8" name="challenge_8" data-result="false"> - Eliminar automáticamente los eventos que han expirado según su configuración TTL.
+
+    C - <input type="radio" class="challenge_8" name="challenge_8" data-result="true"> - Aislar mensajes que fallaron repetidamente para permitir su análisis manual.
+
+    D - <input type="radio" class="challenge_8" name="challenge_8" data-result="false"> - Actuar como un backup en tiempo real de toda la configuración del broker.
+<br/><br/>
+
+9. **¿Qué herramienta es un ejemplo común de un Event Broker de alto rendimiento?**
+
+    A - <input type="radio" class="challenge_9" name="challenge_9" data-result="false"> - SQLite.
+
+    B - <input type="radio" class="challenge_9" name="challenge_9" data-result="true"> - Kafka.
+
+    C - <input type="radio" class="challenge_9" name="challenge_9" data-result="false"> - Jenkins.
+
+    D - <input type="radio" class="challenge_9" name="challenge_9" data-result="false"> - Docker.
+<br/><br/>
+
+10. **¿Qué significa que un evento sea "Inmutable"?**
+
+    A - <input type="radio" class="challenge_10" name="challenge_10" data-result="false"> - Que solo puede ser consumido por un único servicio dentro del ecosistema.
+
+    B - <input type="radio" class="challenge_10" name="challenge_10" data-result="true"> - Que el contenido del mensaje no puede alterarse tras haber sido publicado.
+
+    C - <input type="radio" class="challenge_10" name="challenge_10" data-result="false"> - Que el esquema del evento debe ser el mismo para todos los lenguajes.
+
+    D - <input type="radio" class="challenge_10" name="challenge_10" data-result="false"> - Que los datos del evento se borran automáticamente tras ser procesados.
+<br/><br/>
+
+11. **¿Qué es el patrón "Event Sourcing"?**
+
+    A - <input type="radio" class="challenge_11" name="challenge_11" data-result="false"> - Una técnica para buscar eventos específicos dentro de un archivo de logs.
+
+    B - <input type="radio" class="challenge_11" name="challenge_11" data-result="true"> - Reconstruir el estado actual mediante el histórico completo de eventos.
+
+    C - <input type="radio" class="challenge_11" name="challenge_11" data-result="false"> - Enviar eventos únicamente cuando el usuario realiza una acción manual.
+
+    D - <input type="radio" class="challenge_11" name="challenge_11" data-result="false"> - Un método de autenticación basado en la emisión de tokens temporales.
+<br/><br/>
+
+12. **¿Cuál es una desventaja común de las arquitecturas EDA?**
+
+    A - <input type="radio" class="challenge_12" name="challenge_12" data-result="false"> - Genera un acoplamiento excesivo entre el productor y los consumidores.
+
+    B - <input type="radio" class="challenge_12" name="challenge_12" data-result="true"> - Incrementa la dificultad para trazar y depurar errores distribuidos.
+
+    C - <input type="radio" class="challenge_12" name="challenge_12" data-result="false"> - Impide el uso de microservicios escritos en diferentes tecnologías.
+
+    D - <input type="radio" class="challenge_12" name="challenge_12" data-result="false"> - Requiere que todos los servicios estén alojados en el mismo servidor.
+<br/><br/>
+
+13. **¿Qué es la "Idempotencia" en el procesamiento de eventos?**
+
+    A - <input type="radio" class="challenge_13" name="challenge_13" data-result="false"> - La capacidad de enviar múltiples eventos en un solo paquete de datos.
+
+    B - <input type="radio" class="challenge_13" name="challenge_13" data-result="false"> - El proceso de cifrar la información sensible antes de llegar al broker.
+
+    C - <input type="radio" class="challenge_13" name="challenge_13" data-result="true"> - Garantizar el mismo resultado final tras procesar un evento duplicado.
+
+    D - <input type="radio" class="challenge_13" name="challenge_13" data-result="false"> - La velocidad máxima de transferencia de mensajes por segundo en la red.
+<br/><br/>
+
+14. **¿Qué diferencia a un "Comando" de un "Evento"?**
+
+    A - <input type="radio" class="challenge_14" name="challenge_14" data-result="false"> - El comando se guarda en disco y el evento solo reside en la memoria RAM.
+
+    B - <input type="radio" class="challenge_14" name="challenge_14" data-result="true"> - El comando expresa una intención y el evento notifica un hecho pasado.
+
+    C - <input type="radio" class="challenge_14" name="challenge_14" data-result="false"> - No existe diferencia; ambos términos se refieren a mensajes asíncronos.
+
+    D - <input type="radio" class="challenge_14" name="challenge_14" data-result="false"> - Los eventos requieren respuesta inmediata y los comandos son ignorados.
+<br/><br/>
+
+15. **¿Qué es el "Backpressure" en sistemas de mensajería?**
+
+    A - <input type="radio" class="challenge_15" name="challenge_15" data-result="false"> - Una técnica para forzar el borrado de mensajes cuando el broker se llena.
+
+    B - <input type="radio" class="challenge_15" name="challenge_15" data-result="true"> - Un mecanismo para que el consumidor regule el ritmo del productor.
+
+    C - <input type="radio" class="challenge_15" name="challenge_15" data-result="false"> - La latencia acumulada entre el envío del evento y su procesamiento final.
+
+    D - <input type="radio" class="challenge_15" name="challenge_15" data-result="false"> - Una vulnerabilidad de seguridad que expone los datos del Event Broker.
+<br/><br/>
+
+16. **¿Qué rol cumple el patrón CQRS en combinación con EDA?**
+
+    A - <input type="radio" class="challenge_16" name="challenge_16" data-result="false"> - Comprimir los eventos para reducir el ancho de banda en redes inestables.
+
+    B - <input type="radio" class="challenge_16" name="challenge_16" data-result="false"> - Unificar el modelo de lectura y escritura en una sola interfaz síncrona.
+
+    C - <input type="radio" class="challenge_16" name="challenge_16" data-result="true"> - Separar las operaciones de escritura de las consultas de información.
+
+    D - <input type="radio" class="challenge_16" name="challenge_16" data-result="false"> - Actuar como un firewall que filtra eventos antes de entrar al microservicio.
+<br/><br/>
+
+17. **¿Qué es un "Schema Registry" en arquitecturas de eventos?**
+
+    A - <input type="radio" class="challenge_17" name="challenge_17" data-result="false"> - Un registro de auditoría sobre qué usuarios han accedido a los eventos.
+
+    B - <input type="radio" class="challenge_17" name="challenge_17" data-result="true"> - Un repositorio para gestionar y validar las versiones de los contratos.
+
+    C - <input type="radio" class="challenge_17" name="challenge_17" data-result="false"> - Una base de datos relacional que almacena el payload de cada mensaje.
+
+    D - <input type="radio" class="challenge_17" name="challenge_17" data-result="false"> - Un componente encargado de enrutar eventos según el peso del archivo.
+<br/><br/>
+
+18. **¿Cuál es el beneficio de usar EDA para la integración de sistemas externos?**
+
+    A - <input type="radio" class="challenge_18" name="challenge_18" data-result="false"> - Permite compartir el mismo espacio de memoria entre sistemas distintos.
+
+    B - <input type="radio" class="challenge_18" name="challenge_18" data-result="true"> - Facilita la integración reactiva sin bloquear el proceso principal.
+
+    C - <input type="radio" class="challenge_18" name="challenge_18" data-result="false"> - Elimina la necesidad de utilizar protocolos de seguridad como OAuth2.
+
+    D - <input type="radio" class="challenge_18" name="challenge_18" data-result="false"> - Fuerza a todos los sistemas externos a utilizar el mismo lenguaje.
+<br/><br/>
+
+19. **¿Qué es el "Fan-out" en mensajería?**
+
+    A - <input type="radio" class="challenge_19" name="challenge_19" data-result="false"> - Una técnica de descarte de eventos basada en el tiempo de expiración.
+
+    B - <input type="radio" class="challenge_19" name="challenge_19" data-result="false"> - El proceso de agrupar múltiples eventos en un solo envío por lotes.
+
+    C - <input type="radio" class="challenge_19" name="challenge_19" data-result="true"> - La distribución de un único evento hacia múltiples suscriptores.
+
+    D - <input type="radio" class="challenge_19" name="challenge_19" data-result="false"> - Un algoritmo para balancear la carga interna dentro del clúster de Kafka.
+<br/><br/>
+
+20. **¿Cuál es el principal desafío de la "Ordenación de Eventos" en sistemas distribuidos?**
+
+    A - <input type="radio" class="challenge_20" name="challenge_20" data-result="false"> - Conseguir que los eventos pesen lo mismo para evitar cuellos de botella.
+
+    B - <input type="radio" class="challenge_20" name="challenge_20" data-result="true"> - Mantener la secuencia lógica de los hechos a través de múltiples nodos.
+
+    C - <input type="radio" class="challenge_20" name="challenge_20" data-result="false"> - Evitar que el broker asigne IDs alfanuméricos a los mensajes recibidos.
+
+    D - <input type="radio" class="challenge_20" name="challenge_20" data-result="false"> - Limitar la cantidad de eventos que un productor puede emitir por segundo.
+
+<div id="quiz-result">
+    <button id="challenge_validate" style="padding:8px; border-bottom: 1px solid grey;" >Click aquí para validar respuestas<button>
+</div>
+
 ## Conclusión
 
 Migrar hacia una arquitectura orientada a eventos es un paso natural cuando tu sistema crece y el acoplamiento empieza a doler. Es el complemento externo ideal para el diseño interno que logramos con Clean Architecture.
